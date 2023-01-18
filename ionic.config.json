@@ -1,0 +1,7 @@
+{
+  "name": "pocketpal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
