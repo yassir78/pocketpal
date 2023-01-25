@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Topics
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +13,20 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item *ngFor="let topic of topics | async">
+        <ion-label [routerLink]="['/topic-details',topic.id]">{{topic.name}}</ion-label>
+      </ion-item>
+      <ion-item *ngIf="(topics | async)?.length === 0">
+        <ion-label>No Topics</ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab>
+    <ion-fab-button>
+      <ion-icon name="add" (click)="openModal()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
